@@ -15,6 +15,8 @@ import {
   DriversModule,
   DashboardModule
 } from './modules';
+import { StoreModule } from '@ngrx/store';
+import { reducers, metaReducers } from './reducers';
 
 @NgModule({
   declarations: [
@@ -31,6 +33,13 @@ import {
     TeamsModule,
     DriversModule,
     DashboardModule,
+    StoreModule.forRoot(reducers, {
+      metaReducers,
+      runtimeChecks: {
+        strictStateImmutability: true,
+        strictActionImmutability: true
+      }
+    }),
   ],
   providers: [],
   bootstrap: [AppComponent]
